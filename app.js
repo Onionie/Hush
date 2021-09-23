@@ -34,9 +34,11 @@ app.get("/register", function (req, res){
   res.render("register")
 });
 
+//////////// POST methods ///////////////
+
 app.post("/register", function(req, res){
   const newUser = new User({
-    email: req.body.email,
+    email: req.body.username,
     password: req.body.password
   });
 
@@ -48,6 +50,25 @@ app.post("/register", function(req, res){
       res.render("secrets")
     }
   });
+});
+
+app.post("/login", function(req, res){
+  const username = req.body.username;
+  const password = req.body.password;
+
+  User.findOne({email: username}, function(err, foundUser){
+    if(err){
+      console.log(err);
+    }
+    else{
+      if(foundUser){
+        if(foundUser.password = password){
+          res.render("secrets");
+        }
+      }
+    }
+  });
+
 });
 
 

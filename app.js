@@ -22,7 +22,7 @@ const userShema = new mongoose.Schema({
 });
 
 const secret = "Averylongstringthatisasecret"
-userShema.plugin(encrypt, { secret: secret});
+userShema.plugin(encrypt, { secret: secret, encryptedFields: ['password']});
 
 const User = new mongoose.model("User", userShema);
 

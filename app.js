@@ -29,7 +29,7 @@ app.use(passport.session());
 mongoose.connect('mongodb://localhost:27017/userDB', {useNewUrlParser: true});
 
 //create new Schema
-const userShema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   email: String,
   password: String
 });
@@ -37,7 +37,12 @@ const userShema = new mongoose.Schema({
 //plug in that is needed to save our users
 userSchema.plugin(passportLocalMongoose);
 
-const User = new mongoose.model("User", userShema);
+const User = new mongoose.model("User", userSchema);
+
+passport.use(User.createStrategy());
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.get("/", function (req, res){
   res.render("home")

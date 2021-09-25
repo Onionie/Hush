@@ -34,6 +34,9 @@ const userShema = new mongoose.Schema({
   password: String
 });
 
+//plug in that is needed to save our users
+userSchema.plugin(passportLocalMongoose);
+
 const User = new mongoose.model("User", userShema);
 
 app.get("/", function (req, res){

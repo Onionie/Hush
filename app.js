@@ -27,6 +27,8 @@ app.use(passport.session());
 
 //connect to mongodb using mongoose
 mongoose.connect('mongodb://localhost:27017/userDB', {useNewUrlParser: true});
+mongoose.set("useCreateIndex", true); 
+
 
 //create new Schema
 const userSchema = new mongoose.Schema({
@@ -37,7 +39,7 @@ const userSchema = new mongoose.Schema({
 //plug in that is needed to save our users
 userSchema.plugin(passportLocalMongoose);
 
-const User = new mongoose.model("User", userSchema);
+const User = new mongoose.model("User", userSc hema);
 
 passport.use(User.createStrategy());
 

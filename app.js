@@ -69,7 +69,8 @@ app.get("/secrets", function(req, res){
 });
 
 app.get("/logout", function (req, res){
-  res.render("register")
+  req.logout();
+  res.redirect("/");
 });
 
 //////////// POST methods ///////////////

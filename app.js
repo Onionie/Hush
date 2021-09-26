@@ -68,6 +68,10 @@ app.get("/secrets", function(req, res){
 
 });
 
+app.get("/logout", function (req, res){
+  res.render("register")
+});
+
 //////////// POST methods ///////////////
 
 app.post("/register", function(req, res){
@@ -84,23 +88,19 @@ app.post("/register", function(req, res){
 });
 
 app.post("/login", function(req, res){
-  const username = req.body.username;
-  const password = req.body.password;
+  const user = new User({
+    username: req.body.username,
+    password: req.body.password
+  });
 
-  //Find one email that is the same as the user name input by the user
-  User.findOne({email: username}, function(err, foundUser){
+  req.login(user, function(err){
     if(err){
       console.log(err);
     }
-    //Then if user is found check for matching password
     else{
-      if(foundUser){
-        bcrypt.compare(password, foundUser.password, function(err, result) {
-          if(result === true){
-            res.render("secrets");
-          }
-        });
-      }
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/secrets")
+      });
     }
   });
 

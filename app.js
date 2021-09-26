@@ -27,7 +27,7 @@ app.use(passport.session());
 
 //connect to mongodb using mongoose
 mongoose.connect('mongodb://localhost:27017/userDB', {useNewUrlParser: true});
-mongoose.set("useCreateIndex", true); 
+
 
 
 //create new Schema
@@ -39,7 +39,7 @@ const userSchema = new mongoose.Schema({
 //plug in that is needed to save our users
 userSchema.plugin(passportLocalMongoose);
 
-const User = new mongoose.model("User", userSc hema);
+const User = new mongoose.model("User", userSchema);
 
 passport.use(User.createStrategy());
 
@@ -58,25 +58,29 @@ app.get("/register", function (req, res){
   res.render("register")
 });
 
+app.get("/secrets", function(req, res){
+  if(req.isAuthenticated()){
+    res.render("secrets");
+  }
+  else{
+    res.redirect("login");
+  }
+
+});
+
 //////////// POST methods ///////////////
 
 app.post("/register", function(req, res){
-  bcrypt.hash(req.body.password, saltRounds, function(err, hash){
-    const newUser = new User({
-      email: req.body.username,
-      password: hash
-    });
-
-    newUser.save(function(err){
-      if(err){
-        console.log(err);
-      }
-      else{
-        res.render("secrets")
-      }
-    });
+  User.register({username: req.body.username}, req.body.password, function(err, user){
+    if(err){
+      console.log(err);
+    }
+    else{
+      passport.authenticate("local")(req, res, function(){
+        res.redirect("/secrets")
+      });
+    }
   });
-
 });
 
 app.post("/login", function(req, res){

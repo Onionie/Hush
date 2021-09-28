@@ -103,11 +103,10 @@ app.get("/secrets", function(req, res){
     }
     else{
       if(foundUsers){
-        res.render("/secrets", {userWithSecrets: foundUsers});
+        res.render("secrets", {userWithSecrets: foundUsers});
       }
     }
   });
-
 });
 
 app.get("/submit", function(req, res){

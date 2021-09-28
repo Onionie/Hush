@@ -12,8 +12,6 @@ This is a web application that lets user post anonymously. This app focuses on u
 - Mongodb + Mongoose
 - Passport.js + OAuth 2.0
 
-# Deployment
-
 # Screenshots
 <img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/1.PNG" width = "1080">
 <img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/2.PNG" width = "1080">

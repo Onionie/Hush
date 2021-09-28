@@ -10,5 +10,7 @@ This is a web application that focus on user Authentication using username and p
 - Express.js
 - EJS
 - Mongodb + Mongoose
-- NPM packages:
-  - 
+
+# Deployment
+
+# Screenshots

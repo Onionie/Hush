@@ -1,5 +1,5 @@
-# LetMeIn
-This is a web application that focus on user Authentication using username and password by applying different methods, such as, Encryption, Hashing, Salting and Hashing, Passport.js, and OAuth 2.0.
+# Secrets
+This is a web application that lets user post anonymously. This app focuses on user Authentication using username and password by applying different methods, such as, Encryption, Hashing, Salting and Hashing, Passport.js, and OAuth 2.0.
 
 # Tools Used
 - HTML
@@ -10,6 +10,7 @@ This is a web application that focus on user Authentication using username and p
 - Express.js
 - EJS
 - Mongodb + Mongoose
+- Passport.js + OAuth 2.0
 
 # Deployment
 

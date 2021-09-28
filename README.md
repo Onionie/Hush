@@ -14,3 +14,7 @@ This is a web application that focus on user Authentication using username and p
 # Deployment
 
 # Screenshots
+<img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/1.PNG" width = "1080">
+<img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/2.PNG" width = "1080">
+<img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/3.PNG" width = "1080">
+<img src = "https://github.com/Onionie/Secrets/blob/main/Screenshots/4.PNG" width = "1080">
